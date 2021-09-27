@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.impacta</groupId>
-	<artifactId>conta-corrente</artifactId>
+	<artifactId>Api_Gateway</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>d-conta-corrente</name>
+	<name>Api_Gateway</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>16</java.version>
