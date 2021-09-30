@@ -1,6 +1,7 @@
 package br.com.impacta.model;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -11,10 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.Transient;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 
-@Entity(name="conta")
+@Entity(name="cliente")
 public class Cliente implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -29,6 +31,7 @@ public class Cliente implements Serializable {
     @Column(nullable = false)
 	private String nome;
     
+   
     @Column(nullable = false)
 	private String datanasc;
 

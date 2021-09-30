@@ -6,7 +6,7 @@ services:
     restart: always
     build:
       context: .
-      dockerfile: Api_Gateway/Dockerfile
+      dockerfile: Dockerfile
     environment:
       TZ: America/Sao_paulo
       SPRING.DATASOURCE.URL: jdbc:mysql://banco-apli:3308/projeto_api?useSSL=false&serverTimezone=UTC&enabledTLSProtocols=TLSv1.2
