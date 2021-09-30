@@ -1,5 +1,4 @@
 version: '3.4'
-
 services:
   api_gateway:
     image: danilosn562/api_gateway
@@ -40,6 +39,7 @@ services:
       - 3308
     networks:
       - danilo-networks    
+      
       
 networks:
   danilo-networks:

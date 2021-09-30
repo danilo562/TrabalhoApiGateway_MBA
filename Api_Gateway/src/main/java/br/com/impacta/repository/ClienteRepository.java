@@ -14,13 +14,6 @@ public interface ClienteRepository extends JpaRepository<Cliente,Long> {
 
 	
 List<Cliente> findByNome(String nome);
-//Cliente findById(long id);
-//	
-//	ContaCorrente findByIdhg(Long id);  
-//
-//	
-//	@Modifying
-//	@Query("update conta u set u.saldo = ?1 where u.id = ?2")
-//	 int  setBySaldo(Double firstname, Long lastname);
+
 	
 }

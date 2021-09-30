@@ -15,7 +15,6 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.format.annotation.DateTimeFormat;
 
 
-
 @Entity(name="cliente")
 public class Cliente implements Serializable {
 	
