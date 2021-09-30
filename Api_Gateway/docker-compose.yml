@@ -1,12 +1,26 @@
 version: '3.4'
 
 services:
-  Api_Gateway:
-    image: danilosn562/Api_Gateway:0.0.1-SNAPSHOT
+  api_gateway:
+    image: danilosn562/api_gateway
+    restart: always
+    build:
+      context: .
+      dockerfile: Api_Gateway/Dockerfile
+    environment:
+      TZ: America/Sao_paulo
+      SPRING.DATASOURCE.URL: jdbc:mysql://banco-apli:3308/projeto_api?useSSL=false&serverTimezone=UTC&enabledTLSProtocols=TLSv1.2
+      SPRING.DATASOURCE.USERNAME: root
+      SPRING.DATASOURCE.PASSWORD: admin123
+      SPRING.FLYWAY.URL: jdbc:mysql://banco-apli:3308/projeto_api?useSSL=false&serverTimezone=UTC&enabledTLSProtocols=TLSv1.2
+      SPRING.FLYWAY.USER: root
+      SPRING.FLYWAY.PASSWORD: admin123  
     ports:
       - 8100:8100
     networks:
       - danilo-networks
+    depends_on:
+      - banco-apli  
       
   banco-apli:
     image: mysql:5.7.22
