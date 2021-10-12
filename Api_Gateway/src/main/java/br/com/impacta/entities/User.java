@@ -3,14 +3,26 @@ package br.com.impacta.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+
+@Entity(name="tb_user")
 public class User implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String name;
+	private String nome;
 	private String email;
 	private String password;
 	
@@ -23,7 +35,7 @@ public class User implements Serializable {
 	public User(Long id, String name, String email, String password) {
 		super();
 		this.id = id;
-		this.name = name;
+		this.nome = name;
 		this.email = email;
 		this.password = password;
 	}
@@ -40,12 +52,12 @@ public class User implements Serializable {
 
 
 	public String getName() {
-		return name;
+		return nome;
 	}
 
 
 	public void setName(String name) {
-		this.name = name;
+		this.nome = name;
 	}
 
 
@@ -71,7 +83,7 @@ public class User implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(email, id, name, password);
+		return Objects.hash(email, id, nome, password);
 	}
 
 
@@ -84,7 +96,7 @@ public class User implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Objects.equals(email, other.email) && Objects.equals(id, other.id) && Objects.equals(name, other.name)
+		return Objects.equals(email, other.email) && Objects.equals(id, other.id) && Objects.equals(nome, other.nome)
 				&& Objects.equals(password, other.password);
 	}
 	
