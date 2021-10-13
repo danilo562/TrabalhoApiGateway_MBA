@@ -14,7 +14,7 @@ public interface UserLogadoRepository extends JpaRepository<UserRoles, Long> {
 	
 	//@Query("SELECT * FROM projeto_api.tb_user_role where user_id =:user_id")
 	 @Query(value = "SELECT * FROM projeto_api.tb_user_role where user_id = ?1", nativeQuery = true)
-	UserRoles findByUser_id(Long user_id);
+	 UserRoles findByUser_id(Long user_id);
 	
  
 

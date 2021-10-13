@@ -1,6 +1,7 @@
 package br.com.impacta.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -24,18 +25,21 @@ public class Usuario implements Serializable{
 	
 	//private boolean admin;
 	
+	//List<String> roles;
 	
+	
+
+
 	public Usuario() {}
 
 
-	public Usuario(Long id, String nome, String email, String password, boolean admin) {
+	public Usuario(Long id, String nome, String email, String password) {
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.password = password;
-		//this.admin = admin;
+		
 	}
-
 
 	public Long getId() {
 		return id;
@@ -85,6 +89,12 @@ public class Usuario implements Serializable{
 //	public void setAdmin(boolean admin) {
 //		this.admin = admin;
 //	}
+	
+	
+
+
+
+
 
 
 	@Override

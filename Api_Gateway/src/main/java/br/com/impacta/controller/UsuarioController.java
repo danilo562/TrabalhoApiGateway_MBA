@@ -58,13 +58,13 @@ public class UsuarioController {
 		}else if(user.getPassword().equals(password)) {
 			
 			var userLog = repository_user_logado.findByUser_id(user.getId());
-			var role = repository_Role.getById(userLog.getRole_id());
+		//	var role = repository_Role.getById(userLog.getRole_id());
 			
 			usuLog.setUser_id(user.getId());
 			usuLog.setName(user.getName());
-			usuLog.setEmail(user.getEmail());
-			usuLog.setRole_id(role.getId());
-			usuLog.setRoleName(role.getRoleName());
+		//	usuLog.setEmail(user.getEmail());
+		//	usuLog.setRole_id(role.getId());
+		//	usuLog.setRoleName(role.getRoleName());
 			
 		}
 
