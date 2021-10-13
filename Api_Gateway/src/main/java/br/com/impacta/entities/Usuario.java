@@ -8,13 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-
-@Entity(name="tb_user1")
-public class User implements Serializable {
-
+@Entity(name="tb_user")
+public class Usuario implements Serializable{
+	
 	/**
 	 * 
 	 */
@@ -26,18 +22,18 @@ public class User implements Serializable {
 	private String email;
 	private String password;
 	
+	//private boolean admin;
 	
-	public User() {
-		
-	}
+	
+	public Usuario() {}
 
 
-	public User(Long id, String name, String email, String password) {
-		super();
+	public Usuario(Long id, String nome, String email, String password, boolean admin) {
 		this.id = id;
-		this.nome = name;
+		this.nome = nome;
 		this.email = email;
 		this.password = password;
+		//this.admin = admin;
 	}
 
 
@@ -51,13 +47,13 @@ public class User implements Serializable {
 	}
 
 
-	public String getName() {
+	public String getNome() {
 		return nome;
 	}
 
 
-	public void setName(String name) {
-		this.nome = name;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 
@@ -81,9 +77,19 @@ public class User implements Serializable {
 	}
 
 
+//	public boolean isAdmin() {
+//		return admin;
+//	}
+
+
+//	public void setAdmin(boolean admin) {
+//		this.admin = admin;
+//	}
+
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(email, id, nome, password);
+		return Objects.hash( email, id, nome, password);
 	}
 
 
@@ -95,11 +101,11 @@ public class User implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User other = (User) obj;
-		return Objects.equals(email, other.email) && Objects.equals(id, other.id) && Objects.equals(nome, other.nome)
-				&& Objects.equals(password, other.password);
+		Usuario other = (Usuario) obj;
+		return Objects.equals(email, other.email) && Objects.equals(id, other.id)
+				&& Objects.equals(nome, other.nome) && Objects.equals(password, other.password);
 	}
 	
 	
-	
+
 }
