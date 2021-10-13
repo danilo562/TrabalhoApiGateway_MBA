@@ -45,44 +45,47 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioRepository repository_user;
 	
-	@Operation(summary = "Login Usuario pelo email e senha")
-	@GetMapping(value = "/login_usu/{email}/{password}")
-	public UsuarioLogado getLogin(
-			@PathVariable("email") String email,
-			@PathVariable("password") String password) {
-
-		UsuarioLogado usuLog = new UsuarioLogado();
-		var user = repository.findByEmail(email);
-		if (user == null) { throw new RuntimeException("Nao Encontrou o Usuario ============== <<<<<<<<<<<");
-		
-		}else if(user.getPassword().equals(password)) {
-			
-			var userLog = repository_user_logado.findByUser_id(user.getId());
-		//	var role = repository_Role.getById(userLog.getRole_id());
-			
-			usuLog.setUser_id(user.getId());
-			usuLog.setName(user.getName());
-		//	usuLog.setEmail(user.getEmail());
-		//	usuLog.setRole_id(role.getId());
-		//	usuLog.setRoleName(role.getRoleName());
-			
-		}
-
-		return usuLog;
-
-	}
+//	@Operation(summary = "Login Usuario pelo email e senha")
+//	@GetMapping(value = "/login_usu/{email}/{password}")
+//	public UsuarioLogado getLogin(
+//			@PathVariable("email") String email,
+//			@PathVariable("password") String password) {
+//
+//		UsuarioLogado usuLog = new UsuarioLogado();
+//		var user = repository.findByEmail(email);
+//		if (user == null) { throw new RuntimeException("Nao Encontrou o Usuario ============== <<<<<<<<<<<");
+//		
+//		}else if(user.getPassword().equals(password)) {
+//			
+//			var userLog = repository_user_logado.findByUser_id(user.getId());
+//		//	var role = repository_Role.getById(userLog.getRole_id());
+//			
+//			usuLog.setUser_id(user.getId());
+//			usuLog.setName(user.getName());
+//		//	usuLog.setEmail(user.getEmail());
+//		//	usuLog.setRole_id(role.getId());
+//		//	usuLog.setRoleName(role.getRoleName());
+//			
+//		}
+//
+//		return usuLog;
+//
+//	}
 	
 	@Operation(summary = "Para criar o usuario")
-	@PostMapping("/Usuario/Created/{email}/{password}")
-	@ResponseStatus(HttpStatus.CREATED)
+	@PostMapping("/Usuario/Created/{email}/{password}/{nome}/{role}")
+//	@ResponseStatus(HttpStatus.CREATED)
 	public Usuario salvar(@PathVariable("email") String email,
-			@PathVariable("password") String password) {
+			@PathVariable("password") String password,
+			@PathVariable("nome") String nome,
+			@PathVariable("role") String role) {
 		Usuario usu = new Usuario();
-		String senhaCriptografada = passwordEncoder.encode(password);
-		usu.setPassword(senhaCriptografada);
+	//	String senhaCriptografada = passwordEncoder.encode(password);
+		usu.setPassword(password);
 		usu.setEmail(email);
-		usu.setNome("TESTE");
-		var cad = usuarioService.salvar(usu);
+		usu.setNome(nome);
+		usu.setRoles(role);
+		var cad = repository_user.save(usu);
 		return cad;
 		
 		

@@ -2,5 +2,6 @@ CREATE TABLE IF NOT EXISTS `tb_user` (
   `id` INT(10) AUTO_INCREMENT PRIMARY KEY,
   `nome` CHAR(100) NOT NULL,
   `email` CHAR(200) NOT NULL,
-  `password` CHAR(100) NOT NULL
+  `password` CHAR(100) NOT NULL,
+  `roles` CHAR(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

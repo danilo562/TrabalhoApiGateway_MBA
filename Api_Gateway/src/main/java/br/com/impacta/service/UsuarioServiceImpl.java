@@ -43,31 +43,12 @@ public class UsuarioServiceImpl implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Usuario usuario =  repository.findByEmail(username)
 				.orElseThrow(() -> new UsernameNotFoundException("usuario nao encontrado."));
-//		var userLog = repository_user_logado.findByUser_id(usuario.getId());
-//		String rol="";
-//		var role1 = repository_Role.getById(userLog.getRole_id());
-//		System.out.println("Role NAme >> "+ role1.getClass().getName().toString());
-//		rol =  role1.getRoleName();
-//		System.out.println("Role NAme >> "+ role1.getRoleName());
-//		
-//		System.out.println("Rol >> "+ rol);
-		
-		
-//		for(int i=0; i<  userLog.size();i++) {
-//			System.out.println("id role >> "+userLog.get(i).getRole_id());
-//			var role = repository_Role.getById(userLog.get(i).getRole_id());
-//			System.out.println("id role >> "+userLog.get(i).getRole_id());
-//			System.out.println("Role NAme >> "+ role.getRoleName());
-//			rol = rol+""+ role.getRoleName()+",";
-//			
-//		}
-		
-//		System.out.println("Role completo >> "+ rol);
+
 		String roles ="USER";
 		
 		return User.builder().username(usuario.getEmail())
 				.password(encoder.encode(usuario.getPassword()) )
-				.roles(roles)
+				.roles(usuario.getRoles())
 				.build();
 	}
 

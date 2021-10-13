@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,27 +20,30 @@ public class Usuario implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	  @Column(nullable = false)
 	private String nome;
+	  @Column(nullable = false)
 	private String email;
+	  @Column(nullable = false)
 	private String password;
 	
 	//private boolean admin;
+	  @Column(nullable = false)
+	private String roles;
 	
-	//List<String> roles;
 	
-	
-
-
 	public Usuario() {}
 
 
-	public Usuario(Long id, String nome, String email, String password) {
+	public Usuario(Long id, String nome, String email, String password, String roles) {
+		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.password = password;
-		
+		this.roles = roles;
 	}
+
 
 	public Long getId() {
 		return id;
@@ -81,25 +85,24 @@ public class Usuario implements Serializable{
 	}
 
 
-//	public boolean isAdmin() {
-//		return admin;
-//	}
+	public String getRoles() {
+		return roles;
+	}
 
 
-//	public void setAdmin(boolean admin) {
-//		this.admin = admin;
-//	}
-	
-	
+	public void setRoles(String roles) {
+		this.roles = roles;
+	}
 
 
-
-
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 
 	@Override
 	public int hashCode() {
-		return Objects.hash( email, id, nome, password);
+		return Objects.hash(email, id, nome, password, roles);
 	}
 
 
@@ -112,10 +115,11 @@ public class Usuario implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Usuario other = (Usuario) obj;
-		return Objects.equals(email, other.email) && Objects.equals(id, other.id)
-				&& Objects.equals(nome, other.nome) && Objects.equals(password, other.password);
+		return Objects.equals(email, other.email) && Objects.equals(id, other.id) && Objects.equals(nome, other.nome)
+				&& Objects.equals(password, other.password) && Objects.equals(roles, other.roles);
 	}
-	
+
+
 	
 
 }
