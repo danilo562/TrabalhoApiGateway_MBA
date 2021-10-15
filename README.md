@@ -1,12 +1,9 @@
 # TrabalhoApiGateway_MBA
 Trabalho Professor Vinicius Api Gateway 
 
-1- Depois de clonar o projeto execute o comando no terminal 
-( mvn clean package )
+1- Dentro da raiz do projeto, terminal executar o comando: docker-compose up
 
-2- Dentro da raiz do projeto no terminal rodar 
-( docker-compose up )
-
+2- Link para importar collection com requests via Postman: https://www.getpostman.com/collections/eb24b043b2d4fac21bae
 
 
 # Acesso e Usuarios

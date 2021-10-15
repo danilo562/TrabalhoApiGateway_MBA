@@ -1,105 +1,40 @@
 package br.com.impacta.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.*;
+import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
-import java.util.Objects;
+import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Transient;
-
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.format.annotation.DateTimeFormat;
-
-
-@Entity(name="cliente")
+@Getter
+@Setter
+@Entity
+@Table(name = "cliente")
 public class Cliente implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-    @Transient
-	private String porta;
-    
-    @Column(nullable = false)
-	private String nome;
-    
-   
-    @Column(nullable = false)
-	private String datanasc;
 
-	public Cliente(Long id, String porta, String nome, String datanasc) {
-		this.id = id;
-		this.porta = porta;
-		this.nome = nome;
-		this.datanasc = datanasc;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_cliente")
+    private int idCliente;
 
-	public Cliente() {
-	}
+    @Column(name = "nome_cliente")
+    private String nome;
 
-	public Long getId() {
-		return id;
-	}
+    @Column(name = "data_nascimento")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private Date dataNascimento;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Cliente(){ super(); }
 
-	public String getPorta() {
-		return porta;
-	}
 
-	public void setPorta(String porta) {
-		this.porta = porta;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getDatanasc() {
-		return datanasc;
-	}
-
-	public void setDatanasc(String datanasc) {
-		this.datanasc = datanasc;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(datanasc, id, nome, porta);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Cliente other = (Cliente) obj;
-		return Objects.equals(datanasc, other.datanasc) && Objects.equals(id, other.id)
-				&& Objects.equals(nome, other.nome) && Objects.equals(porta, other.porta);
-	}
-	
-
-	
-	
+    @JsonCreator
+    public Cliente(@JsonProperty("nome_cliente") String nome,
+                   @JsonProperty("data_nascimento") @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd") Date dataNascimento){
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
+    }
 
 }

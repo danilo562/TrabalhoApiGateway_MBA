@@ -1,7 +1,7 @@
 version: '3.4'
 services:
   api_gateway:
-    image: danilosn562/api_gateway
+    image: api_gateway
     restart: always
     build:
       context: .

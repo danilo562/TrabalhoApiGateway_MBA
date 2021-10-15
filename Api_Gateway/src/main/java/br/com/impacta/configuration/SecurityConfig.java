@@ -8,7 +8,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
 import br.com.impacta.service.UsuarioServiceImpl;
 
 @EnableWebSecurity
@@ -16,9 +15,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	private UsuarioServiceImpl usuarioService;
-	
-	
-	
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();		
@@ -29,12 +26,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.userDetailsService(usuarioService)
 		.passwordEncoder(passwordEncoder());
 	}
-	
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable()
 		.authorizeRequests()
-		.antMatchers("/api_gateway/**").hasAnyRole("ADMIN","USER")//,
+		.antMatchers("/clientes/**").hasAnyRole("ADMIN","USER")//,
 		.antMatchers("/api_gateway_user/**").hasAnyRole("ADMIN")
 		.and()
 		//.formLogin();
