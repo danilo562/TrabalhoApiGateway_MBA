@@ -8,8 +8,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-@Getter
-@Setter
 @Entity
 @Table(name = "cliente")
 public class Cliente implements Serializable {
@@ -35,4 +33,29 @@ public class Cliente implements Serializable {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
     }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Date getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
 }
