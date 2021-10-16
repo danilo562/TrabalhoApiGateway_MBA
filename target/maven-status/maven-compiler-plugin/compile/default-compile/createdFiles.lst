@@ -1,0 +1,12 @@
+br/com/impacta/service/ClienteService.class
+br/com/impacta/controller/ClienteController.class
+br/com/impacta/configuration/SecurityConfig.class
+br/com/impacta/repository/UsuarioRepository.class
+br/com/impacta/service/UsuarioService.class
+br/com/impacta/repository/ClienteRepository.class
+br/com/impacta/exception/ClienteNotFoundException.class
+br/com/impacta/entities/Usuario.class
+br/com/impacta/controller/UsuarioController.class
+br/com/impacta/configuration/OpenApiConfiguration.class
+br/com/impacta/entities/Cliente.class
+br/com/impacta/Api_GatewayApplication.class

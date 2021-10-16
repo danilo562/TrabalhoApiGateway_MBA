@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS `tb_user_role` (
+  `id` INT(10) AUTO_INCREMENT PRIMARY KEY,
+  `user_id` INT(10) NOT NULL,
+  `role_id` INT(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
