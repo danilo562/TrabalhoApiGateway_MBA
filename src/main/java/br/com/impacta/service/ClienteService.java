@@ -45,7 +45,7 @@ public class ClienteService {
 
         logger.info("Consultando cliente por nome: {}", nome);
 
-        var cliente = clienteRepository.findByNome(nome);
+        var cliente = clienteRepository.findByNomeStartingWith(nome);
         if (cliente.isEmpty()) throw new ClienteNotFoundException("Não há cliente cadastrado com nome: " + nome);
 
         return cliente;
