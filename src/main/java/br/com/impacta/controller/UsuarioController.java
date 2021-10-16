@@ -12,7 +12,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(name="Usuário-endpoint")
 @RestController
-@RequestMapping("api_gateway_user")
+@RequestMapping("api-gateway-user/v1")
 public class UsuarioController {
 
 	private UsuarioService usuarioService;
@@ -22,7 +22,7 @@ public class UsuarioController {
 	private UsuarioRepository repository_user;
 
 	@Operation(summary = "Criar usuário")
-	@PostMapping("/Usuario/Created/{email}/{password}/{nome}/{role}")
+	@PostMapping("/usuario/create/{email}/{password}/{nome}/{role}")
 	public Usuario salvar(@PathVariable("email") String email,
 						  @PathVariable("password") String password,
 						  @PathVariable("nome") String nome,
